@@ -1,7 +1,10 @@
-package ex1;
+package ex1.src;
 
 import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.PriorityQueue;
 
 /**
  * This class implement weighted_graph_algorithms. that implement an Undirected (positive) Weighted Graph Theory algorithms including:
@@ -50,7 +53,7 @@ public class WGraph_Algo implements weighted_graph_algorithms {
      * @return copy(graphW).
      */
     @Override
-    public weighted_graph copy(){
+    public weighted_graph copy() {
         WGraph_DS copy = new WGraph_DS();
 
         Iterator<node_info> c = graphW.getV().iterator();
@@ -80,7 +83,7 @@ public class WGraph_Algo implements weighted_graph_algorithms {
      * Returns true if and only if (iff) there is a valid path from EVREY node to each,
      * by checking if there is a vertex in the graph
      * that the method did not reach him from all other vertex.
-     *
+     * <p>
      * Checking is done by selecting 2 nodes using an iterator and calling the shortestPathDist method () with these nodes.
      * This method checks if there is a proper trajectory from the src to the dest by marking all the nodes that they have a proper trajectory from src.
      * Then by switching with an iterator a check is made if there is a vertex in the graph marked as "not visited" if there is one meaning that there
@@ -106,7 +109,7 @@ public class WGraph_Algo implements weighted_graph_algorithms {
      * Returns the shortest path length between src and dest
      * by implementing a dijkstra algorithm.
      * if there is no such path -> returns -1.
-     *
+     * <p>
      * The algorithm gets the start and destination value and first goes over all the nodes in the graph using an iterator
      * and updates the tag value to Integer.Max_Value and the info of each node to "not visited".
      * Then insert the source node into the PriorityQueue structure which allows to say priority (this priority was set
@@ -159,7 +162,7 @@ public class WGraph_Algo implements weighted_graph_algorithms {
      * src--> n1-->n2-->...dest.
      * By pass the shortest path from the end to the beginning.
      * If no such path exists return null.
-     *
+     * <p>
      * The method sends the given values of src and dest to the shortestPathDist method (),
      * and adds to the ArrayList the nodes of the corresponding path by passing iterator
      * on neighbors of each node starting from dest, since the nodes were added from the end to the beginning,
@@ -242,6 +245,14 @@ public class WGraph_Algo implements weighted_graph_algorithms {
         }
         return true;
 
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        WGraph_Algo that = (WGraph_Algo) o;
+        return graphW.equals(that.graphW);
     }
 
 }

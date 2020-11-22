@@ -1,13 +1,10 @@
-package ex1;
-
-import ex0.node_data;
+package ex1.src;
 
 import java.io.Serializable;
-//import java.util.Collection;
-//import java.util.Comparator;
-//import java.util.HashMap;
-//import java.util.Iterator;
-import java.util.*;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Iterator;
 
 /**
  * * This implementation weighted_graph
@@ -38,6 +35,7 @@ public class WGraph_DS implements weighted_graph, Comparator<node_info>, Seriali
         sum_edge = 0;
         MC = 0;
     }
+
 
     /**
      * Return the node_data by the node_id.
@@ -122,7 +120,7 @@ public class WGraph_DS implements weighted_graph, Comparator<node_info>, Seriali
                 edge.get(node2).put(node1, w);
                 sum_edge++;
                 MC++;
-            } else if (w!=getEdge(node1,node2)){
+            } else if (w != getEdge(node1, node2)) {
                 edge.get(node1).put(node2, w);
                 edge.get(node2).put(node1, w);
                 MC++;
@@ -138,7 +136,7 @@ public class WGraph_DS implements weighted_graph, Comparator<node_info>, Seriali
      */
     @Override
     public Collection<node_info> getV() {
-        if(graph==null)return null;
+        if (graph == null) return null;
         return graph.values();
     }
 
@@ -151,7 +149,7 @@ public class WGraph_DS implements weighted_graph, Comparator<node_info>, Seriali
      */
     @Override
     public Collection<node_info> getV(int node_id) {
-        if(neighbors.get(node_id) == null) return null;
+        if (neighbors.get(node_id) == null) return null;
         return neighbors.get(node_id).values();
     }
 
@@ -261,6 +259,7 @@ public class WGraph_DS implements weighted_graph, Comparator<node_info>, Seriali
     /**
      * This method compares a given graph to this graph and checks if the structure of the graph is the same:
      * the graph nodes, the neighbors of the nodes and the sides
+     *
      * @param obj
      * @return True if objects are identical, else false.
      */
@@ -293,7 +292,7 @@ public class WGraph_DS implements weighted_graph, Comparator<node_info>, Seriali
                     return false;
                 }
 
-                if (gr.getEdge(node1.getKey(),node2.getKey())!=getEdge(node1.getKey(),node2.getKey())) {
+                if (gr.getEdge(node1.getKey(), node2.getKey()) != getEdge(node1.getKey(), node2.getKey())) {
                     return false;
                 }
 
@@ -380,4 +379,6 @@ public class WGraph_DS implements weighted_graph, Comparator<node_info>, Seriali
             tag = t;
         }
     }
+
+
 }
